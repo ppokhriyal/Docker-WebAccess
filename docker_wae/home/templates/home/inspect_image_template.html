@@ -1,0 +1,24 @@
+{% extends 'home/layout.html' %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+			<nav aria-label="breadcrumb">
+  				<ol class="breadcrumb">
+    				<li class="breadcrumb-item"><a href="{{url_for('home.images')}}">Images Templates</a></li>
+    				<li class="breadcrumb-item active" aria-current="page">Inspect</li>
+  				</ol>
+			</nav>
+			<div class="card border-0 rounded-0">
+				<div class="card-header">
+					<span class="badge badge-dark ml-2 border-0 rounded-0 text-left">Image Template</span><span class="badge badge-warning rounded-0">{{inspect_image['RepoTags'][0]}}</span>
+				</div>
+				<div class="card-body bg-dark text-white">
+					{{inspect_image}}
+				</div>
+			</div>
+			
+		</main>
+	</div>
+</div>
+{% endblock content %}

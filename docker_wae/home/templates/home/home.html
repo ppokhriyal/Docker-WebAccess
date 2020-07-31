@@ -1,0 +1,64 @@
+{% extends 'home/layout.html' %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    			<h1 class="h4">Dashboard</h1>
+    		</div>
+    		<p class="h6">Docker Client Information</p>
+    		<span class="badge badge-dark rounded-0 ">{{client.version()['Platform']['Name']}} Edition</span>
+    		<span class="badge badge-warning rounded-0 mr-3">{{client.version()['Components'][0]['Version']}}</span>
+    		<span class="badge badge-dark rounded-0">Api Version</span>
+    		<span class="badge badge-warning rounded-0">{{client.version()['Components'][0]['Details']['ApiVersion']}}</span>
+    		<div class="row border-bottom">
+    			<div class="col-xl-3 col-md-6 pt-4">
+    				<div class="alert alert-dark text-center" role="alert">
+    					<i class="fas fa-clone"></i> Image Templates
+    					<hr>
+    					<p>Locally Available</p><h5 class="text-center"><span class="badge badge-primary">{{client.images() | length }}</span></h5>
+                        <hr>
+                        <a class="small text-dark stretched-link" href="{{url_for('home.images')}}">View Details</a>
+					</div>
+                </div>
+                <div class="col-xl-3 col-md-6 pt-4">
+                	<div class="alert alert-dark text-center" role="alert">
+                		<i class="fas fa-box"></i> Containers 
+                		<hr>
+                        <div class="row">
+                            <div class="col">
+                                <p>Running</p> <i class="fas fa-thumbs-up mr-2"></i>
+                                <span class="badge badge-primary">{{running}}</span>
+                            </div>
+                            <div class="col">
+                                <p>Stopped</p><i class="fas fa-thumbs-down mr-2"></i>
+                                <span class="badge badge-primary">{{stop}}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <a class="small text-dark stretched-link" href="#">View Details</a>
+                	</div>
+                </div>
+                <div class="col-xl-3 col-md-6 pt-4">
+                    <div class="alert alert-dark text-center" role="alert">
+                        <i class="fas fa-hdd"></i> Volumes
+                        <hr>
+                        <p>Attached Volumes</p><h5 class="text-center"><span class="badge badge-primary">{{client.volumes() | length - 1 }}</span></h5>
+                        <hr>
+                        <a class="small text-dark stretched-link" href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 pt-4">
+                   <div class="alert alert-dark text-center" role="alert">
+                        <i class="fas fa-network-wired"></i> Networks
+                        <hr>
+                        <p>Available Networks</p><h5 class="text-center"><span class="badge badge-primary">{{client.networks() | length }}</span></h5>
+                        <hr>
+                        <a class="small text-dark stretched-link" href="#">View Details</a>
+                   </div>
+                </div>
+    		</div>	
+    	</main>
+   	</div> 
+</div>
+{% endblock content %}

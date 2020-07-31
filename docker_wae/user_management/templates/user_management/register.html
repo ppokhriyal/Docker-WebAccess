@@ -1,0 +1,84 @@
+{% extends 'user_management/layout.html' %}
+{% block content %}
+	<div class="row justify-content-center">
+      	<div class="col-xl-10 col-lg-12 col-md-9">
+        	<div class="card o-hidden border-0 shadow-lg my-5">
+          		<div class="card-body p-0">
+            		<div class="row">
+              			<div class="col-lg-3"></div>
+              			<div class="col-lg-6">
+                			<div class="p-5">
+                  				<div class="text-center">
+                  					<h1 class="h4 text-gray-900 mb-4">Docker Web Access Engine</h1>
+                    				<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                  				</div>
+                  			<form class="user" method="POST" action="">
+                  				{{ form.hidden_tag() }}
+
+                    			<div class="form-group">
+                    				{% if form.email.errors %}
+                    					{{ form.email(class="form-control form-control-user is-invalid",placeholder="Email Address") }}
+                    					<div class="invalid-feedback">
+                    						{% for error in form.email.errors %}
+                    							<span>{{ error }}</span>
+                    						{% endfor %}
+                    					</div>
+                    				{% else %}
+                    					{{ form.email(class="form-control form-control-user",placeholder="Email Address") }}
+                    				{% endif %}
+                    			</div>
+                    			<div class="form-group">
+                    				{% if form.username.errors %}
+                      					{{ form.username(class="form-control form-control-user is-invalid ",placeholder="Username")}}
+                      					<div class="invalid-feedback">
+                      						{% for error in form.username.errors %}
+                      							<span>{{ error }}</span>
+                      						{% endfor %}
+                      					</div>
+                      				{% else %}
+                      					{{ form.username(class="form-control form-control-user",placeholder="Username")}}
+                    				{% endif%}
+                    			</div>
+                    			<div class="form-group">
+                    				{% if form.password.errors %}
+                      					{{ form.password(class="form-control form-control-user is-invalid",placeholder="Password")}}
+                      					<div class="invalid-feedback">
+                      						{% for error in form.password.errors %}
+                      							<span>{{ error }}</span>
+                      						{% endfor %}
+                      					</div>
+                    				{% else %}
+                    					{{ form.password(class="form-control form-control-user",placeholder="Password")}}
+                    				{% endif %}
+                    			</div>
+                    			<div class="form-group">
+                      				{% if form.confirm_password.errors %}
+                      					{{ form.confirm_password(class="form-control form-control-user is-invalid",placeholder="Confirm Password")}}
+                      					<div class="invalid-feedback">
+                      						{% for error in form.confirm_password.errors %}
+                      							<span>{{ error }}</span>
+                      						{% endfor %}
+                      					</div>
+                    				{% else %}
+                    					{{ form.confirm_password(class="form-control form-control-user",placeholder="Confirm Password")}}
+                    				{% endif %}
+                    			</div>
+                    				{{ form.submit(class="btn btn-primary btn-user btn-block")}}
+                  			</form>
+                  			<hr>
+                  			<div class="text-center">
+                    			<a class="small" href="{{url_for('user_management.login')}}">Already have an account? Login!</a>
+                  			</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+{% endblock content %}
